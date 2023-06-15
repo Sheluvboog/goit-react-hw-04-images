@@ -4,23 +4,27 @@ import PropTypes from 'prop-types';
 
 const Modal = ({ onClose, largeImageURL }) => {
   useEffect(() => {
-
-    // функція для закриття модального вікна по клавіші ESC
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
         onClose();
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown); // слухаємо клавіші
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown); // прибираємо слухача
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
 
+  const handleOverlayClick = e => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className={css.overlay} onClick={onClose}>
+    <div className={css.overlay} onClick={handleOverlayClick}>
       <div className={css.modal}>
         <img className={css.modal__image} src={largeImageURL} alt="" />
       </div>

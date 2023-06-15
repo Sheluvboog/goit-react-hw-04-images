@@ -27,7 +27,7 @@ Searchbar.propTypes = {
   onSubmit: PropTypes.func,
   onChange: PropTypes.func,
   onClickClear: PropTypes.func,
-  query: PropTypes.string,
+  inputValue: PropTypes.string,
 };
 
 export default Searchbar;
